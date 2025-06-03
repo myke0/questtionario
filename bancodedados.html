@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionário de Satisfação</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        .secao {
+            background-color: #f9f9f9;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border-left: 4px solid #3498db;
+        }
+        .secao-titulo {
+            color: #3498db;
+            margin-top: 0;
+        }
+        .pergunta {
+            margin-bottom: 15px;
+        }
+        .pergunta-texto {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .obrigatoria::after {
+            content: " *";
+            color: red;
+        }
+        input[type="text"], 
+        input[type="email"], 
+        input[type="date"],
+        textarea, select {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        textarea {
+            height: 100px;
+        }
+        .opcoes {
+            margin: 5px 0 15px;
+        }
+        .opcao {
+            margin-bottom: 5px;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .escala {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+        .escala label {
+            text-align: center;
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <h1>Questionário de Satisfação</h1>
+    <form id="questionarioForm" action="processa_questionario.php" method="POST">
+        
+        <!-- Seção de Informações Pessoais -->
+        <div class="secao">
+            <h2 class="secao-titulo">Informações Pessoais</h2>
+            
+            <div class="pergunta">
+                <label class="pergunta-texto obrigatoria" for="nome">Nome completo</label>
+                <input type="text" id="nome" name="nome" required>
+            </div>
+            
+            <div class="pergunta">
+                <label class="pergunta-texto obrigatoria" for="email">E-mail</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="pergunta">
+                <label class="pergunta-texto" for="data_nascimento">Data de nascimento</label>
+                <input type="date" id="data_nascimento" name="data_nascimento">
+            </div>
+        </div>
+        
+        <!-- Seção de Avaliação -->
+        <div class="secao">
+            <h2 class="secao-titulo">Avaliação dos Serviços</h2>
+            
+            <div class="pergunta">
+                <p class="pergunta-texto obrigatoria">Como você avalia nossa plataforma?</p>
+                <div class="opcoes">
+                    <div class="opcao">
+                        <input type="radio" id="avaliacao_5" name="avaliacao_geral" value="5" required>
+                        <label for="avaliacao_5">Excelente</label>
+                    </div>
+                    <div class="opcao">
+                        <input type="radio" id="avaliacao_4" name="avaliacao_geral" value="4">
+                        <label for="avaliacao_4">Muito bom</label>
+                    </div>
+                    <div class="opcao">
+                        <input type="radio" id="avaliacao_3" name="avaliacao_geral" value="3">
+                        <label for="avaliacao_3">Bom</label>
+                    </div>
+                    <div class="opcao">
+                        <input type="radio" id="avaliacao_2" name="avaliacao_geral" value="2">
+                        <label for="avaliacao_2">Regular</label>
+                    </div>
+                    <div class="opcao">
+                        <input type="radio" id="avaliacao_1" name="avaliacao_geral" value="1">
+                        <label for="avaliacao_1">Ruim</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pergunta">
+                <p class="pergunta-texto obrigatoria">Em uma escala de 1 a 10, qual a probabilidade de você recomendar nossos serviços?</p>
+                <div class="escala">
+                    <label for="recomendacao_1">1<br><input type="radio" id="recomendacao_1" name="recomendacao" value="1" required></label>
+                    <label for="recomendacao_2">2<br><input type="radio" id="recomendacao_2" name="recomendacao" value="2"></label>
+                    <label for="recomendacao_3">3<br><input type="radio" id="recomendacao_3" name="recomendacao" value="3"></label>
+                    <label for="recomendacao_4">4<br><input type="radio" id="recomendacao_4" name="recomendacao" value="4"></label>
+                    <label for="recomendacao_5">5<br><input type="radio" id="recomendacao_5" name="recomendacao" value="5"></label>
+                    <label for="recomendacao_6">6<br><input type="radio" id="recomendacao_6" name="recomendacao" value="6"></label>
+                    <label for="recomendacao_7">7<br><input type="radio" id="recomendacao_7" name="recomendacao" value="7"></label>
+                    <label for="recomendacao_8">8<br><input type="radio" id="recomendacao_8" name="recomendacao" value="8"></label>
+                    <label for="recomendacao_9">9<br><input type="radio" id="recomendacao_9" name="recomendacao" value="9"></label>
+                    <label for="recomendacao_10">10<br><input type="radio" id="recomendacao_10" name="recomendacao" value="10"></label>
+                </div>
+            </div>
+            
+            <div class="pergunta">
+                <p class="pergunta-texto">Quais dos seguintes recursos você utiliza? (Marque todos que aplicar)</p>
+                <div class="opcoes">
+                    <div class="opcao">
+                        <input type="checkbox" id="recurso_1" name="recursos[]" value="suporte_online">
+                        <label for="recurso_1">Suporte online</label>
+                    </div>
+                    <div class="opcao">
+                        <input type="checkbox" id="recurso_2" name="recursos[]" value="app_movel">
+                        <label for="recurso_2">Aplicativo móvel</label>
+                    </div>
+                    <div class="opcao">
+                        <input type="checkbox" id="recurso_3" name="recursos[]" value="dashboard">
+                        <label for="recurso_3">Dashboard web</label>
+                    </div>
+                    <div class="opcao">
+                        <input type="checkbox" id="recurso_4" name="recursos[]" value="relatorios">
+                        <label for="recurso_4">Relatórios personalizados</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Seção de Comentários -->
+        <div class="secao">
+            <h2 class="secao-titulo">Comentários Adicionais</h2>
+            
+            <div class="pergunta">
+                <label class="pergunta-texto" for="comentarios">Deixe seus comentários, sugestões ou críticas</label>
+                <textarea id="comentarios" name="comentarios"></textarea>
+            </div>
+            
+            <div class="pergunta">
+                <label class="pergunta-texto" for="melhorias">O que poderíamos melhorar?</label>
+                <select id="melhorias" name="melhorias">
+                    <option value="">Selecione uma opção</option>
+                    <option value="atendimento">Atendimento ao cliente</option>
+                    <option value="interface">Interface do usuário</option>
+                    <option value="funcionalidades">Funcionalidades</option>
+                    <option value="performance">Performance/velocidade</option>
+                    <option value="documentacao">Documentação</option>
+                </select>
+            </div>
+        </div>
+        
+        <button type="submit">Enviar Questionário</button>
+    </form>
+
+    <script>
+        // Validação do formulário antes de enviar
+        document.getElementById('questionarioForm').addEventListener('submit', function(event) {
+            let isValid = true;
+            
+            // Verifica campos obrigatórios
+            const requiredFields = document.querySelectorAll('[required]');
+            requiredFields.forEach(field => {
+                if (!field.value) {
+                    isValid = false;
+                    field.style.borderColor = 'red';
+                } else {
+                    field.style.borderColor = '#ddd';
+                }
+            });
+            
+            // Verifica se pelo menos um radio button foi selecionado para perguntas obrigatórias
+            const requiredRadios = document.querySelectorAll('input[type="radio"][required]');
+            requiredRadios.forEach(radio => {
+                const groupName = radio.name;
+                const isChecked = document.querySelector(`input[name="${groupName}"]:checked`);
+                if (!isChecked) {
+                    isValid = false;
+                    // Destaca a pergunta
+                    const questionDiv = radio.closest('.pergunta');
+                    questionDiv.style.border = '1px solid red';
+                    questionDiv.style.padding = '10px';
+                }
+            });
+            
+            if (!isValid) {
+                event.preventDefault();
+                alert('Por favor, preencha todos os campos obrigatórios marcados com *');
+            }
+        });
+    </script>
+</body>
+</html>
